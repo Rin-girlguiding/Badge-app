@@ -1,0 +1,440 @@
+/* ============================================================
+   Badge Tracker — styles
+   Base: warm off-white, ink navy text.
+   Accent: deep guiding-navy for chrome; the 6 official theme
+   colours are reserved for badge/theme content, never used
+   decoratively elsewhere.
+   Type: Baloo 2 for headings/nav (rounded, badge-ish warmth),
+   Inter for everything data/body (calm, legible at small sizes).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #FBF9F5;
+  --surface: #FFFFFF;
+  --ink: #23262E;
+  --ink-soft: #63676F;
+  --line: #E7E3D9;
+  --navy: #223357;
+  --navy-soft: #4A5A7D;
+  --focus: #3E7CB1;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(35,38,46,0.06), 0 1px 1px rgba(35,38,46,0.04);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 4px 0;
+}
+
+a { color: var(--focus); }
+
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- App shell ---------- */
+
+#app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.topbar {
+  padding: 18px 18px 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar h1 {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar .back {
+  background: none;
+  border: none;
+  color: var(--navy-soft);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+
+main {
+  flex: 1;
+  padding: 4px 16px 90px 16px;
+}
+
+/* ---------- Bottom nav ---------- */
+
+.tabbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+  z-index: 10;
+}
+
+.tabbar button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 12.5px;
+  padding: 8px 4px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.tabbar button .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: transparent;
+}
+
+.tabbar button.active { color: var(--navy); }
+.tabbar button.active .dot { background: var(--focus); }
+
+/* ---------- Cards & generic content ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.card-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.muted { color: var(--ink-soft); font-size: 13.5px; }
+
+.btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--navy);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+.btn-danger {
+  background: #FBEAEA;
+  border-color: #F0C7C3;
+  color: #A5362A;
+}
+
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.link-row {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: var(--navy-soft);
+  font-size: 13.5px;
+  text-decoration: underline;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  font-family: inherit;
+}
+
+input[type="text"], input[type="number"], select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--ink);
+}
+
+label { font-size: 13px; color: var(--ink-soft); display: block; margin-bottom: 4px; }
+
+.field { margin-bottom: 12px; }
+
+/* ---------- Status pills ---------- */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- Theme shield / panel ---------- */
+
+.theme-panel {
+  border-radius: var(--radius-card);
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+}
+
+.theme-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.shield {
+  width: 30px; height: 34px;
+  flex-shrink: 0;
+  clip-path: polygon(50% 0%, 100% 18%, 100% 62%, 50% 100%, 0% 62%, 0% 18%);
+  border: 2px solid currentColor;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Badge-type placeholder shapes (used until real badge artwork is added).
+   Interest = square, Skill = hexagon, Theme = shield, Award/Extra = circle. */
+.badge-shape {
+  width: 56px; height: 56px;
+  margin: 0 auto 8px;
+  border: 3px solid var(--shape-color, #9AA0AA);
+  background: color-mix(in srgb, var(--shape-color, #9AA0AA) 16%, white);
+}
+.badge-shape.shape-square { border-radius: 10px; }
+.badge-shape.shape-circle { border-radius: 50%; }
+.badge-shape.shape-hex {
+  clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0% 50%);
+}
+.badge-shape.shape-shield {
+  clip-path: polygon(50% 0%, 100% 18%, 100% 62%, 50% 100%, 0% 62%, 0% 18%);
+}
+.badge-shape.solid-fill { background: var(--shape-color); }
+
+/* ---------- Home masthead ---------- */
+
+.home-masthead {
+  text-align: center;
+  padding: 14px 0 6px;
+}
+.home-logo-circle {
+  width: 64px; height: 64px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--line);
+  background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.home-logo-circle img { width: 100%; height: 100%; object-fit: cover; }
+.logo-placeholder { display: none; font-size: 9px; line-height: 1.2; color: var(--ink-soft); text-align: center; }
+.app-title {
+  font-size: 22px;
+  margin: 0 0 4px 0;
+}
+.home-subtitle {
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.theme-panel-head h3 { margin: 0; font-size: 15.5px; }
+
+.badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  font-size: 13.5px;
+}
+.badge-row:first-of-type { border-top: none; }
+
+.slot-empty { color: var(--ink-soft); font-style: italic; }
+
+/* ---------- Roster table ---------- */
+
+.roster-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 4px;
+  border-top: 1px solid var(--line);
+  gap: 10px;
+}
+.roster-row:first-of-type { border-top: none; }
+
+.roster-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.checkbox.checked { background: var(--focus); border-color: var(--focus); }
+
+/* ---------- Home popup ---------- */
+
+.home-hero {
+  padding: 8px 0 18px 0;
+}
+
+.home-hero h2 { font-size: 22px; }
+
+.summary-item {
+  display: flex; justify-content: space-between; padding: 8px 0;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+.summary-item:first-of-type { border-top: none; }
+
+/* ---------- Two-column grid (Quick view, last-updated panels) ---------- */
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ---------- Full table grid ---------- */
+
+.full-table-wrap { overflow-x: auto; }
+table.full-table { border-collapse: collapse; font-size: 12px; width: max-content; }
+table.full-table th, table.full-table td {
+  border: 1px solid var(--line);
+  padding: 5px 7px;
+  white-space: nowrap;
+}
+table.full-table th { background: var(--surface); position: sticky; top: 0; }
+
+/* ---------- Footer disclaimer ---------- */
+
+.footer-note {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 11px;
+  padding: 14px 20px 100px;
+  line-height: 1.5;
+}
+
+/* ---------- Inventory theme panels ---------- */
+
+.theme-inv-panel {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+}
+.theme-inv-header {
+  color: #fff;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.theme-inv-header::-webkit-details-marker { display: none; }
+.theme-inv-header::after {
+  content: '▾';
+  transition: transform 0.15s ease;
+}
+.theme-inv-panel[open] > .theme-inv-header::after { transform: rotate(180deg); }
+.theme-inv-body { background: var(--surface); padding: 4px 14px; }
+.inv-row { padding: 10px 0; border-top: 1px solid var(--line); }
+.inv-row:first-child { border-top: none; }
+.inv-row-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; gap: 8px; }
+
+.member-name-hero {
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 8px 0 14px 0;
+}
+
+.award-btn {
+  flex: 1;
+  min-width: 90px;
+  padding: 12px 8px;
+  border-width: 2px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ---------- Print (member record download/print) ---------- */
+
+@media print {
+  #tabbar, .topbar, .no-print, .footer-note, .link-row { display: none !important; }
+  body, #app { background: #fff; max-width: 100%; }
+  main { padding: 0 12px; }
+  .card, .theme-panel { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  .member-name-hero { font-size: 28px; }
+}
