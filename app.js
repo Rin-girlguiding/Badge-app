@@ -184,7 +184,7 @@ function renderHome() {
         <img src="assets/girlguiding-logo.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
         <span class="logo-placeholder">Logo<br>goes here</span>
       </div>
-      <h1 class="app-title" id="appTitle">1st Hucclecote Badge Tracker</h1>
+      <h1 class="app-title" id="appTitle">Badge Tracker</h1>
       <p class="home-subtitle">
         Badges last updated: ${formatLastUpdated(overallLastUpdated(STATE.statuses))}<br>
         Inventory last updated: ${formatLastUpdated(overallLastUpdated(STATE.inventory))}
